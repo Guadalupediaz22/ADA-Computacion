@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ada Computacion</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="contenedor-padre">
+    <div class="ventas-por-sucursal">
+      <div class="encabezado">
+        <h1>Ventas por sucursal</h1>
+      </div>
+      <div class="contenido">
+        <table>
+          <tr>
+            <th>Sucursal</th>
+            <th>Ventas</th>
+            <p>caballito</p>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="reportes">
+      <div class="encabezado">
+        <h1>Reportes</h1>
+      </div>
+      <div class="contenido">
+        <p class="mensaje-fijo">producto estrella:<span id="resultado_prod_estrella"></span></p>
+        <p class="mensaje-fijo">Vendedora que más ingreso generó<span id="resultado_vend_mas_ingreso"></span></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ventas">
+    <div class="encabezado">
+      <h1>Ventas</h1>
+      <button class="boton-nueva-venta" id="boton-nueva-venta">Nueva Venta</button>
+    </div>
+  </div>
+  <div class="contenido-ventas">
+    <table class="tabla-de-ventas" id="tabla-de-ventas">
+      <tr>
+        <th class="tabla-fecha">Fecha</th>
+        <th class="tabla-vendedora">Vendedora</th>
+        <th class="tabla-sucursal">Sucursal</th>
+        <th class="tabla-componentes">Componentes</th>
+        <th class="tabla-precio">Precio</th>
+        <th class="tabla-acciones">Acciones</th>
+      </tr>
+
+    </table>
+    <button><img src="lapiz.png" alt="editar" width="20px" class="boton-editar-venta" id="boton-editar-venta"></button>
+    <button><img src="tachodebasura.png" alt="borrar" width="20px" class="boton-borrar-venta"></button>
+  </div>
+
+
+  <form class="form-agregar-venta form-agregar-venta-ocultar" id="modal-agregar-venta">
+    <div class="encabezado">
+      <h1>Agregar Venta</h1>
+    </div>
+
+    <label>Vendedora</label>
+    <select id="Vendedoras">
+
+    </select>
+    <label>Componentes</label>
+    <select id="Componentes">
+
+    </select>
+    <label>Sucursal</label>
+    <select id="Sucursal">
+
+    </select>
+    <label>Fecha</label>
+    <input type="date">
+    <div class="contiene-botones-agregar-venta">
+      <button class="boton-cancelar">Cancelar</button>
+      <button class="boton-aceptar">Aceptar</button>
+    </div>
+  </form>
+  <form class="form-editar-venta form-editar-venta-ocultar" id="modal-editar-venta">
+    <div class="encabezado">
+      <h1>Editar Venta</h1>
+    </div>
+    <label>Vendedora</label>
+    <select id="Vendedoras-editar">
+
+    </select>
+    <label>Componentes</label>
+    <select id="Componentes-editar">
+
+    </select>
+    <label>Sucursal</label>
+    <select id="Sucursal-editar">
+
+    </select>
+    <label>Fecha</label>
+    <input type="date">
+    <div class="contiene-botones-editar-venta">
+      <button>cancelar<div class="ocultar"></button>
+      <input type="submit" value="aceptar" id="editar-ventas">
+    </div>
+  </form>
+  <div class="ocultar-eliminar">
+    <div class="encabezado">
+      <h1>Eliminar Venta</h1>
+    </div>
+    <h3>¿Estas seguro?</h3>
+    <p>esta accion no se puede revertir</p>
+  </div>
+  <div class="contiene-botones">
+    <button class="ocultar-boton-cancelar">cancelar</button>
+    <button class="ocultar-boton-eliminar">eliminar</button>
+  </div>
+  <script src="script.js"></script>
+  <script src="ventas.js"></script>
+</body>
+
+</html>
