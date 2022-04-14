@@ -1,17 +1,3 @@
-// Elementos del dom
-//AGREGAR VENTA
-const botonAgregarNuevaVenta = document.getElementById("boton-nueva-venta");
-const modalAgregarNuevaVenta = document.getElementById("modal-agregar-venta");
-botonAgregarNuevaVenta.onclick = () => {
-  modalAgregarNuevaVenta.classList.toggle("form-agregar-venta-ocultar");
-};
-//EDITAR VENTA
-const botonEditarVenta = document.getElementById("boton-editar-venta");
-const modalEditarVenta = document.getElementById("modal-editar-venta");
-botonEditarVenta.onclick = () => {
-  modalEditarVenta.classList.toggle("form-editar-venta-ocultar");
-};
-
 const local = {
   vendedoras: ["Ada", "Grace", "Hedy", "Sheryl"],
   sucursales: ["Centro", "Caballito"],
@@ -152,10 +138,14 @@ const local = {
     { componente: "RAM Quinston Fury", precio: 230 },
   ],
 };
+
 //Proyecto
+
+let { vendedoras, ventas, sucursales, precios } = local;
+
+//PARTE 1
 //1-precioMaquina(componentes): recibe un array de componentes y devuelve el precio de la máquina que se puede armar con esos componentes, que es la suma de los precios de cada componente incluido.
 const precioComponente = (componente) => {
-  const { precios } = local;
   for (const precio of precios) {
     if (precio.componente === componente) {
       return precio.precio;
@@ -170,12 +160,11 @@ const precioMaquina = (componentes) => {
   }
   return acc;
 };
-console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]));
+//console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]));
 
 //2-cantidadVentasComponente(componente): recibe un componente y devuelve la cantidad de veces que fue vendido, o sea que formó parte de una máquina que se vendió. La lista de ventas no se pasa por parámetro, se asume que está identificada por la variable ventas
 const cantidadVentasComponente = (componente) => {
   let acc = 0;
-  const { ventas } = local;
   for (const venta of ventas) {
     if (venta.componentes.includes(componente)) {
       acc++;
@@ -183,6 +172,98 @@ const cantidadVentasComponente = (componente) => {
   }
   return acc;
 };
-console.log(cantidadVentasComponente("Monitor ASC 543"));
+//console.log(cantidadVentasComponente("Monitor ASC 543"));
+
+const cantidadVentasComponente2 = (nombreComponente) => {
+  let acc = 0;
+  for (const venta of ventas) {
+    for (const componente of venta.componentes) {
+      if (nombreComponente === componente) {
+        acc++;
+      }
+    }
+  }
+  return acc;
+};
+//console.log(cantidadVentasComponente2("RAM Quinston Fury"));
 
 //3-vendedoraDelMes(mes, anio), se le pasa dos parámetros numéricos, (mes, anio) y devuelve el nombre de la vendedora que más vendió en plata en el mes. O sea no cantidad de ventas, sino importe total de las ventas. El importe de una venta es el que indica la función precioMaquina. El mes es un número entero que va desde el 1 (enero) hasta el 12 (diciembre).
+const ventasDelMes = (mes, anio) => {
+  return ventas.filter(
+    (venta) =>
+      venta.fecha.getMonth() === mes - 1 && venta.fecha.getFullYear() === anio
+  );
+};
+//console.log(ventasDelMes(1, 2019));
+
+const contadorVentas = (ventas) => {
+  let acc = 0;
+  for (const venta of ventas) {
+    acc += precioMaquina(venta.componentes);
+  }
+  return acc;
+};
+
+const vendedoraDelMes = (mes, anio) => {
+  let acc = 0;
+  let vendedoraMayor = "";
+  for (const vendedora of vendedoras) {
+    if (
+      acc <
+      contadorVentas(
+        ventasDelMes(mes, anio).filter(
+          (venta) => venta.nombreVendedora === vendedora
+        )
+      )
+    ) {
+      acc = contadorVentas(
+        ventasDelMes(mes, anio).filter(
+          (venta) => venta.nombreVendedora === vendedora
+        )
+      );
+      vendedoraMayor = vendedora;
+    }
+  }
+  return vendedoraMayor;
+};
+//console.log(vendedoraDelMes(1, 2019));
+
+//4-ventasMes(mes, anio): Obtener las ventas de un mes. El mes es un número entero que va desde el 1 (enero) hasta el 12 (diciembre).
+const ventasMes = (mes, anio) => contadorVentas(ventasDelMes(mes, anio));
+//console.log(ventasMes(1, 2019));
+
+//5-ventasVendedora(nombre): Obtener las ventas totales realizadas por una vendedora sin límite de fecha.
+const ventasVendedora = (nombre) =>
+  contadorVentas(ventas.filter((venta) => venta.nombreVendedora === nombre));
+//console.log(ventasVendedora("Ada"));
+
+//6-componenteMasVendido(): Devuelve el nombre del componente que más ventas tuvo historicamente. El dato de la cantidad de ventas es el que indica la función cantidadVentasComponente
+const componenteMasVendido = () => {
+  let masVendido = "";
+  let acc = 0;
+  for (const precio of precios) {
+    if (acc < cantidadVentasComponente(precio.componente)) {
+      acc = cantidadVentasComponente(precio.componente);
+      masVendido = precio.componente;
+    }
+  }
+  return masVendido;
+};
+//console.log(componenteMasVendido());
+
+//7-huboVentas(mes, anio): que indica si hubo ventas en un mes determinado. El mes es un número entero que va desde el 1 (enero) hasta el 12 (diciembre).
+const huboVentas = (mes, anio) => ventasDelMes(mes, anio).length > 0;
+//console.log(huboVentas(1, 2019));
+
+//PARTE 2
+//8-Crear la función ventasSucursal(sucursal), que obtiene las ventas totales realizadas por una sucursal sin límite de fecha.
+const ventasSucursal = (sucursal) => {
+  let acc = 0;
+  for (const venta of ventas) {
+    if ((venta.sucursal = sucursal)) {
+      acc++;
+    }
+  }
+  return acc;
+};
+//console.log(ventasSucursal(""));
