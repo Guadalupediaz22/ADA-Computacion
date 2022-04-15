@@ -194,7 +194,7 @@ const ventasDelMes = (mes, anio) => {
       venta.fecha.getMonth() === mes - 1 && venta.fecha.getFullYear() === anio
   );
 };
-console.log(ventasDelMes(2, 2019));
+//console.log(ventasDelMes(2, 2019));
 
 const contadorVentas = (ventas) => {
   let acc = 0;
@@ -270,8 +270,8 @@ const ventasSucursal = (sucursal) => {
 
 //9-Crear la función sucursalDelMes(mes, anio), que se le pasa dos parámetros numéricos, (mes, anio) y devuelve el nombre de la sucursal que más vendió en plata en el mes. No cantidad de ventas, sino importe total de las ventas. El importe de una venta es el que indica la función precioMaquina. El mes es un número entero que va desde el 1 (enero) hasta el 12 (diciembre).
 const sucursalDelMes = (mes, anio) => {
-  let sucursalQueMasVendio = "";
   let acc = 0;
+  let sucursalMayor = "";
   for (const sucursal of sucursales) {
     if (
       acc <
@@ -279,8 +279,12 @@ const sucursalDelMes = (mes, anio) => {
         ventasDelMes(mes, anio).filter((venta) => venta.sucursal === sucursal)
       )
     ) {
+      acc = contadorVentas(
+        ventasDelMes(mes, anio).filter((venta) => venta.sucursal === sucursal)
+      );
+      sucursalMayor = sucursal;
     }
   }
-  return sucursalQueMasVendio;
+  return sucursalMayor;
 };
-console.log(sucursalDelMes(1, 2019));
+//console.log(sucursalDelMes(1, 2019));
