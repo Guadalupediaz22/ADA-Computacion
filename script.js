@@ -288,3 +288,13 @@ const sucursalDelMes = (mes, anio) => {
   return sucursalMayor;
 };
 //console.log(sucursalDelMes(1, 2019));
+
+//PARTE 3
+//10-renderPorMes(): Muestra una lista ordenada del importe total vendido por cada mes/año
+const renderPorMes = () => {
+  return `Enero: ${ventasMes(1, 2019)}
+          Febrero: ${ventasMes(2, 2019)}`;
+};
+//console.log(renderPorMes());
+
+//11-renderPorSucursal(): Muestra una lista del importe total vendido por cada sucursal
