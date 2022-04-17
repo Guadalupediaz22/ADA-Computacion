@@ -291,10 +291,58 @@ const sucursalDelMes = (mes, anio) => {
 
 //PARTE 3
 //10-renderPorMes(): Muestra una lista ordenada del importe total vendido por cada mes/año
-const renderPorMes = () => {
-  return `Enero: ${ventasMes(1, 2019)}
-          Febrero: ${ventasMes(2, 2019)}`;
+const renderPorMes = (anio) => {
+  let meses = [];
+  for (const venta of ventas) {
+    !meses.includes(venta.fecha.getMonth() + 1) >
+      meses.push(venta.fecha.getMonth() + 1);
+  }
+  meses.sort((a, b) => {
+    return a - b;
+  });
+  let acc = "";
+  for (const mes of meses) {
+    acc += `En el periodo ${mes}/${anio} las ganancias fueron de $${ventasMes(
+      mes,
+      anio
+    )}`;
+  }
+  return acc;
 };
-//console.log(renderPorMes());
+//console.log(renderPorMes(2019));
 
 //11-renderPorSucursal(): Muestra una lista del importe total vendido por cada sucursal
+const renderPorSucursal = () => {
+  let acc = "";
+  for (const sucursal of sucursales) {
+    acc += `En ${sucursal} las ganancias fueron de $${ventasSucursal(
+      sucursal
+    )}`;
+  }
+  return acc;
+};
+//console.log(renderPorSucursal());
+
+//12-render(): Tiene que mostrar la unión de los dos reportes anteriores, cual fue el producto más vendido y la vendedora que más ingresos generó Reporte Ventas por mes: Total de enero 2019: 1250 Total de febrero 2019: 4210 Ventas por sucursal: Total de Centro: 4195 Total de Caballito: 1265 Producto estrella: Monitor GPRS 3000 Vendedora que más ingresos generó: Grace
+const vendedoraHistorica = () => {
+  let cantidadAcumulada = 0;
+  let vendedoraMayor = "";
+  for (const vendedora of vendedoras) {
+    if (cantidadAcumulada < contadorVentas(ventasVendedora(vendedora))) {
+      cantidadAcumulada = contadorVentas(ventasVendedora(vendedora));
+      vendedoraMayor = vendedora;
+    }
+  }
+  return vendedoraMayor;
+};
+//console.log(vendedoraHistorica());
+
+const render = () => {
+  console.log(`Reporte mensual año 2019`);
+  console.log(renderPorMes(2019));
+  console.log(`Reporte por sucursal año 2019`);
+  console.log(renderPorSucursal());
+  console.log(`Producto Estrella: ${componenteMasVendido()}`);
+  console.log(`Vendedora que más ingresos generó: ${vendedoraHistorica()}`);
+};
+render();
