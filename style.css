@@ -1,11 +1,8 @@
 .encabezado {
   background-color: #345b63;
   color: white;
-  padding-top: 0.5em;
   padding-left: 1em;
-  font-size: 10px;
-  display: flex;
-  justify-content: space-between;
+  font-size: 20px;
 }
 .contenedor-padre {
   display: flex;
@@ -17,16 +14,30 @@
   flex-basis: 50%;
   margin-right: 1rem;
   margin-left: 1rem;
+  border: 1px solid grey;
 }
 .ventas {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
+  background-color: #345b63;
+}
+.titulo-ventas {
+  color: white;
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px;
 }
 .contenido {
   font-size: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+.contenido-dos {
+  display: flex;
+  flex-direction: column;
 }
 .boton-nueva-venta {
   margin: 10px;
@@ -34,7 +45,8 @@
 .tabla-de-ventas {
   width: 100%;
 }
-.form-agregar-venta {
+
+.form-personalizado {
   display: flex;
   flex-direction: column;
   width: 40%;
@@ -42,6 +54,7 @@
   z-index: 1000;
   left: 30%;
   top: 30%;
+  background-color: lightgray;
 }
 .form-agregar-venta-ocultar {
   display: none;
@@ -55,19 +68,15 @@
 .boton-aceptar {
   margin: 5px;
 }
-.form-editar-venta {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  position: absolute;
-  z-index: 1000;
-  left: 30%;
-  top: 30%;
-}
+
 .form-editar-venta-ocultar {
   display: none;
 }
 .contiene-botones-editar-venta {
   display: flex;
   justify-content: flex-end;
+}
+
+.ocultar-modal-eliminar {
+  display: none;
 }
