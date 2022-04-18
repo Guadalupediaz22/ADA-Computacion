@@ -15,3 +15,14 @@ botonEditarVenta.onclick = () => {
 };
 
 //ELIMINAR VENTA
+const botonEliminarVenta = document.getElementById("boton-eliminar-venta");
+const modalEliminar = document.getElementById("modal-eliminar");
+
+botonEliminarVenta.onclick = () => {
+  modalEliminar.classList.toggle("ocultar-modal-eliminar");
+};
+
+const botonCancelar = document.getElementById("ocultar-boton-cancelar");
+botonCancelar.onclick = () => {
+  modalEliminar.classList.toggle("ocultar-modal-eliminar");
+};
