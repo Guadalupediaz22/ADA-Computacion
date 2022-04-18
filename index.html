@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ada Computacion</title>
+  <link href="reset.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
 </head>
 
@@ -16,32 +17,33 @@
         <h1>Ventas por sucursal</h1>
       </div>
       <div class="contenido">
-        <table>
-          <tr>
+        <p>Sucursal</p>
+        <p>Total Ventas</p>
+        <!-- <table class="prueba">
+          <tr class="tabla-principal">
             <th>Sucursal</th>
-            <th>Ventas</th>
-            <p>caballito</p>
+            <th>Total Ventas</th>
           </tr>
-        </table>
+        </table> -->
       </div>
     </div>
     <div class="reportes">
       <div class="encabezado">
         <h1>Reportes</h1>
       </div>
-      <div class="contenido">
-        <p class="mensaje-fijo">producto estrella:<span id="resultado_prod_estrella"></span></p>
-        <p class="mensaje-fijo">Vendedora que más ingreso generó<span id="resultado_vend_mas_ingreso"></span></p>
+      <div class="contenido-dos">
+        <p class="mensaje-fijo">Producto Estrella:<span id="resultado_prod_estrella"></span></p>
+        <p class="mensaje-fijo">Vendedora que más ingreso generó:<span id="resultado_vend_mas_ingreso"></span></p>
       </div>
     </div>
 
   </div>
 
   <div class="ventas">
-    <div class="encabezado">
-      <h1>Ventas</h1>
-      <button class="boton-nueva-venta" id="boton-nueva-venta">Nueva Venta</button>
-    </div>
+
+    <h1 class="titulo-ventas">Ventas</h1>
+    <button class="boton-nueva-venta" id="boton-nueva-venta">Nueva Venta</button>
+
   </div>
   <div class="contenido-ventas">
     <table class="tabla-de-ventas" id="tabla-de-ventas">
@@ -51,16 +53,23 @@
         <th class="tabla-sucursal">Sucursal</th>
         <th class="tabla-componentes">Componentes</th>
         <th class="tabla-precio">Precio</th>
-        <th class="tabla-acciones">Acciones</th>
-      </tr>
+        <th class="tabla-acciones">
+          Acciones
+          <div>
+            <button><img src="lapiz.png" alt="editar" width="20px" class="boton-editar-venta"
+                id="boton-editar-venta"></button>
+            <button id="boton-eliminar-venta"><img src="tachodebasura.png" alt="borrar" width="20px"
+                class="boton-borrar-venta"></button>
+          </div>
 
+        </th>
+      </tr>
     </table>
-    <button><img src="lapiz.png" alt="editar" width="20px" class="boton-editar-venta" id="boton-editar-venta"></button>
-    <button><img src="tachodebasura.png" alt="borrar" width="20px" class="boton-borrar-venta"></button>
+
   </div>
 
 
-  <form class="form-agregar-venta form-agregar-venta-ocultar" id="modal-agregar-venta">
+  <form class="form-personalizado form-agregar-venta-ocultar" id="modal-agregar-venta">
     <div class="encabezado">
       <h1>Agregar Venta</h1>
     </div>
@@ -84,7 +93,7 @@
       <button class="boton-aceptar">Aceptar</button>
     </div>
   </form>
-  <form class="form-editar-venta form-editar-venta-ocultar" id="modal-editar-venta">
+  <form class="form-personalizado form-editar-venta-ocultar" id="modal-editar-venta">
     <div class="encabezado">
       <h1>Editar Venta</h1>
     </div>
@@ -107,17 +116,20 @@
       <input type="submit" value="aceptar" id="editar-ventas">
     </div>
   </form>
-  <div class="ocultar-eliminar">
-    <div class="encabezado">
+
+  <div id="modal-eliminar" class="ocultar-modal-eliminar form-personalizado">
+    <div>
       <h1>Eliminar Venta</h1>
     </div>
     <h3>¿Estas seguro?</h3>
-    <p>esta accion no se puede revertir</p>
+    <p>Esta accion no se puede revertir</p>
+    <div class="contiene-botones">
+      <button id="ocultar-boton-cancelar" class="boton-cancelar">cancelar</button>
+      <button id="ocultar-boton-eliminar">eliminar</button>
+    </div>
   </div>
-  <div class="contiene-botones">
-    <button class="ocultar-boton-cancelar">cancelar</button>
-    <button class="ocultar-boton-eliminar">eliminar</button>
-  </div>
+
+
   <script src="script.js"></script>
   <script src="ventas.js"></script>
   <script src="modales.js"></script>
