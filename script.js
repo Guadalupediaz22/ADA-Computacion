@@ -140,8 +140,22 @@ const local = {
 };
 
 //Proyecto
-
+//array vacio
+let arrayVendedora = [];
+console.log("vemos q dice el objeto", local.vendedoras);
 let { vendedoras, ventas, sucursales, precios } = local;
+console.log(local);
+
+// const botonAgregarNuevaVenta = document.getElementById("boton-nueva-venta");
+// botonAgregarNuevaVenta.onclick = () => {
+//   console.log("Boton Agregar Nueva Venta");
+// };
+
+const generarSelect = document.getElementById("Vendedoras");
+generarSelect.onclick = () => {
+  console.log("Boton Agregar Nueva Venta");
+};
+// const selectVendedoras = document.getElementById("Vendedoras");
 
 //PARTE 1
 //1-precioMaquina(componentes): recibe un array de componentes y devuelve el precio de la máquina que se puede armar con esos componentes, que es la suma de los precios de cada componente incluido.
@@ -337,12 +351,12 @@ const vendedoraHistorica = () => {
 };
 //console.log(vendedoraHistorica());
 
-const render = () => {
-  console.log(`Reporte mensual año 2019`);
-  console.log(renderPorMes(2019));
-  console.log(`Reporte por sucursal año 2019`);
-  console.log(renderPorSucursal());
-  console.log(`Producto Estrella: ${componenteMasVendido()}`);
-  console.log(`Vendedora que más ingresos generó: ${vendedoraHistorica()}`);
-};
-render();
+// const render = () => {
+//   console.log(`Reporte mensual año 2019`);
+//   console.log(renderPorMes(2019));
+//   console.log(`Reporte por sucursal año 2019`);
+//   console.log(renderPorSucursal());
+//   console.log(`Producto Estrella: ${componenteMasVendido()}`);
+//   console.log(`Vendedora que más ingresos generó: ${vendedoraHistorica()}`);
+// };
+// render();
