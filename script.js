@@ -140,22 +140,26 @@ const local = {
 };
 
 //Proyecto
+const selectEditar = document.getElementById("Vendedoras");
+for (const vendedora of vendedoras) {
+  selectEditar.innerHTML += <option value="${vendedora}">${vendedora} </option>;
+}
 //array vacio
-let arrayVendedora = [];
-console.log("vemos q dice el objeto", local.vendedoras);
-let { vendedoras, ventas, sucursales, precios } = local;
-console.log(local);
+// let arrayVendedora = [];
+// console.log("vemos q dice el objeto", local.vendedoras);
+// let { vendedoras, ventas, sucursales, precios } = local;
+// console.log(local);
 
-// const botonAgregarNuevaVenta = document.getElementById("boton-nueva-venta");
-// botonAgregarNuevaVenta.onclick = () => {
+// // const botonAgregarNuevaVenta = document.getElementById("boton-nueva-venta");
+// // botonAgregarNuevaVenta.onclick = () => {
+// //   console.log("Boton Agregar Nueva Venta");
+// // };
+
+// const generarSelect = document.getElementById("Vendedoras");
+// generarSelect.onclick = () => {
 //   console.log("Boton Agregar Nueva Venta");
 // };
-
-const generarSelect = document.getElementById("Vendedoras");
-generarSelect.onclick = () => {
-  console.log("Boton Agregar Nueva Venta");
-};
-// const selectVendedoras = document.getElementById("Vendedoras");
+// // const selectVendedoras = document.getElementById("Vendedoras");
 
 //PARTE 1
 //1-precioMaquina(componentes): recibe un array de componentes y devuelve el precio de la máquina que se puede armar con esos componentes, que es la suma de los precios de cada componente incluido.
