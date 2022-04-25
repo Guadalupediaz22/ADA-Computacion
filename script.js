@@ -140,26 +140,21 @@ const local = {
 };
 
 //Proyecto
-const selectEditar = document.getElementById("Vendedoras");
-for (const vendedora of vendedoras) {
-  selectEditar.innerHTML += <option value="${vendedora}">${vendedora} </option>;
+//NUEVA VENTA (cargo datos)
+const selectVendedora = document.getElementById("Vendedoras");
+for (const vendedora of local.vendedoras) {
+  selectVendedora.innerHTML += `<option value="${vendedora}">${vendedora} </option>`;
 }
-//array vacio
-// let arrayVendedora = [];
-// console.log("vemos q dice el objeto", local.vendedoras);
-// let { vendedoras, ventas, sucursales, precios } = local;
-// console.log(local);
 
-// // const botonAgregarNuevaVenta = document.getElementById("boton-nueva-venta");
-// // botonAgregarNuevaVenta.onclick = () => {
-// //   console.log("Boton Agregar Nueva Venta");
-// // };
+const selectComponentes = document.getElementById("Componentes");
+for (const componente of local.precios) {
+  selectComponentes.innerHTML += `<option value="${componente.componente}">${componente.componente} </option>`;
+}
 
-// const generarSelect = document.getElementById("Vendedoras");
-// generarSelect.onclick = () => {
-//   console.log("Boton Agregar Nueva Venta");
-// };
-// // const selectVendedoras = document.getElementById("Vendedoras");
+const selectSucursal = document.getElementById("Sucursal");
+for (const sucursal of local.sucursales) {
+  selectSucursal.innerHTML += `<option value="${sucursal}">${sucursal} </option>`;
+}
 
 //PARTE 1
 //1-precioMaquina(componentes): recibe un array de componentes y devuelve el precio de la máquina que se puede armar con esos componentes, que es la suma de los precios de cada componente incluido.
