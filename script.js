@@ -156,6 +156,22 @@ for (const sucursal of local.sucursales) {
   selectSucursal.innerHTML += `<option value="${sucursal}">${sucursal} </option>`;
 }
 
+//EDITAR VENTA
+const selectVendedoraEdit = document.getElementById("Vendedoras-editar");
+for (const vendedora of local.vendedoras) {
+  selectVendedoraEdit.innerHTML += `<option value="${vendedora}">${vendedora} </option>`;
+}
+
+const selectComponentesEdit = document.getElementById("Componentes-editar");
+for (const componente of local.precios) {
+  selectComponentesEdit.innerHTML += `<option value="${componente.componente}">${componente.componente} </option>`;
+}
+
+const selectSucursalEdit = document.getElementById("Sucursal-editar");
+for (const sucursal of local.sucursales) {
+  selectSucursalEdit.innerHTML += `<option value="${sucursal}">${sucursal} </option>`;
+}
+
 //PARTE 1
 //1-precioMaquina(componentes): recibe un array de componentes y devuelve el precio de la máquina que se puede armar con esos componentes, que es la suma de los precios de cada componente incluido.
 const precioComponente = (componente) => {
